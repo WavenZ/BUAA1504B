@@ -37,10 +37,9 @@
 
 ## 1.6 超链接
   
-1. >语法：`[超链接名](超链接地址 "超链接title")`  
-   title可加可不加  
+1. >语法：`[超链接的名字](url?_self)`  
    注：Markdown本身语法不支持链接在新页面中打开。  
-2. >语法：类似HTML语句，如`<a href="超链接地址" target="_blank">超链接名</a>`，支持链接在新页面中打开。
+2. >语法：`[超链接的名字](url?_blank)`，支持链接在新页面中打开。
 
 ## 1.7 列表
 ### 1.7.1 无序列表
@@ -100,7 +99,7 @@
 >2. 1)修饰局部变量\全局变量\修饰函数\修饰成员变量\修饰成员函数  
    2)最重要的特性：隐藏  
    3)不可以同时用const和static修饰成员函数  
-   <a href="https://blog.csdn.net/zzyzgg/article/details/89842744" target="_blank">参考链接</a>
+   [参考链接](https://blog.csdn.net/zzyzgg/article/details/89842744?_blank)
 
 (2) C++ 中 struct 和 class 有哪些区别？ 
 >1. C++ 中保留了C语言的 struct 关键字，并且加以扩充。在C语言中，struct 只能包含成员变量，不能包含成员函数。而在C++中，struct 类似于 class，既可以包含成员变量，又可以包含成员函数。
