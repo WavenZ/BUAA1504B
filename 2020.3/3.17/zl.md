@@ -67,9 +67,59 @@ UDP一般用于即时通信、在线视频等要求实时性能好，但不用�
 
 方法一：利用快排中的partition，时间复杂度O(n)。
 
+```cpp
+template<typename T>
+class TopK{
+public:
+    static vector<T> search(vector<T>& arr, unsigned k){
+        if(arr.size() <= k) return vector<T>(arr.begin(), arr.end());
+        quick_search(arr, 0, arr.size() - 1, k);
+        return vector<T>(arr.begin(), arr.begin() + k);
+    }
+private:
+    static void quick_search(vector<T>& arr, int start, int end, unsigned k){
+        int pos = partition(arr, start, end);
+        if(pos == k) return;
+        else if(pos < k) quick_search(arr, pos + 1, end, k);
+        else quick_search(arr, start , pos - 1, k);
+    }
+    static int partition(vector<T>& arr, int start, int end){
+        default_random_engine e;
+        uniform_int_distribution<unsigned> u(start, end);
+        swap(arr[end], arr[u(e)]);
+        int pivot = arr[end];
+        int pos = start;
+        for(int i = start; i < end; ++i){
+            if(arr[i] < pivot){
+                swap(arr[pos++], arr[i]);
+            }
+        }
+        swap(arr[pos], arr[end]);
+        return pos;
+    }
+};
+```
+缺点：需要修改原数组。
+
 方法二：维护一个大小为K的容器，当容器未满时，将元素插入，否则将当前元素与容器中的最小元素比较，如果大于该元素，则替换之。时间复杂度为O(nlogk)。
+```cpp
+```
 
 (2) 爬楼梯问题，你可以一次爬1层或2层，如果有n层楼梯，一共有点多少种解法？。
 
 思路和斐波那契数列的解法一样，通过自底向上的方法来计算。
+
+```cpp
+int climb_stairs(int n){
+    if(n <= 0) return 0;
+    if(n <= 2) return n;
+    int ans, ans1 = 1, ans2 = 2;
+    for(int i = 3; i <= n; ++i){
+        ans = ans1 + ans2;
+        ans2 = ans1;
+        ans1 = ans;
+    }
+    return ans;
+}
+```
 
